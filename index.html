@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link as="style" crossorigin=""
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary": "#cebdff",
+                        "primary-fixed-dim": "#FF5560",
+                        "outline-variant": "#353535",
+                        "tertiary-fixed-dim": "#cebdff",
+                        "surface-container": "#1f1f1f",
+                        "on-secondary-fixed": "#320047",
+                        "surface-container-low": "#1b1b1b",
+                        "on-primary-container": "#ffffff",
+                        "surface-tint": "#FF5560",
+                        "surface": "#131313",
+                        "on-surface-variant": "#e2e2e2",
+                        "error-container": "#93000a",
+                        "tertiary-fixed": "#e8ddff",
+                        "surface-variant": "#353535",
+                        "on-background": "#e2e2e2",
+                        "on-tertiary-fixed-variant": "#4e388a",
+                        "secondary-container": "#8E2DE2",
+                        "on-error-container": "#ffdad6",
+                        "inverse-surface": "#e2e2e2",
+                        "on-tertiary-fixed": "#21005d",
+                        "on-primary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "error": "#ffb4ab",
+                        "surface-dim": "#131313",
+                        "surface-container-lowest": "#0e0e0e",
+                        "inverse-primary": "#FF5560",
+                        "on-primary-fixed": "#410000",
+                        "secondary-fixed-dim": "#8E2DE2",
+                        "primary-container": "#FF5560",
+                        "outline": "#b18780",
+                        "on-tertiary": "#371f72",
+                        "surface-container-highest": "#353535",
+                        "surface-bright": "#393939",
+                        "secondary-fixed": "#f8d8ff",
+                        "on-error": "#690005",
+                        "on-surface": "#e2e2e2",
+                        "primary-fixed": "#ffd4d4",
+                        "surface-container-high": "#2a2a2a",
+                        "on-primary-fixed-variant": "#930100",
+                        "inverse-on-surface": "#303030",
+                        "background": "#131313",
+                        "primary": "#FF5560",
+                        "tertiary-container": "#9983da",
+                        "on-tertiary-container": "#30176b",
+                        "on-secondary-fixed-variant": "#4A00E0",
+                        "on-secondary-container": "#ffffff",
+                        "secondary": "#8E2DE2"
+                    },
+                    fontFamily: {
+                        "headline": ["Pretendard", "sans-serif"],
+                        "body": ["Pretendard", "sans-serif"],
+                        "label": ["Pretendard", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+                    lineHeight: {
+                        "relaxed": "1.4",
+                    },
+                    keyframes: {
+                        scroll: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' }
+                        }
+                    },
+                    animation: {
+                        scroll: 'scroll 30s linear infinite'
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0e0e0e;
+            color: #e2e2e2;
+            font-family: 'Pretendard', sans-serif;
+            line-height: 1.4;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        button,
+        a,
+        span,
+        label,
+        input,
+        textarea,
+        select {
+            line-height: 1.4 !important;
+        }
+
+        .glass-nav {
+            backdrop-filter: blur(20px);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #FF5560 0%, #8E2DE2 100%);
+            /* -webkit-background-clip: text; */
+            -webkit-text-fill-color: transparent;
+        }
+
+        .primary-gradient {
+            background: linear-gradient(135deg, #FF5560 0%, #8E2DE2 100%);
+        }
+
+        .border-gradient {
+            border-image: linear-gradient(135deg, #FF5560, #8E2DE2) 1;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .icon-gradient {
+            background: linear-gradient(135deg, #FF5560 0%, #8E2DE2 100%);
+            /* -webkit-background-clip: text; */
+            -webkit-text-fill-color: transparent;
+        }
+
+        @keyframes glowing {
+            0% {
+                text-shadow: 0 0 20px rgba(255, 85, 96, 0.2);
+            }
+
+            50% {
+                text-shadow: 0 0 40px rgba(142, 45, 226, 0.6);
+            }
+
+            100% {
+                text-shadow: 0 0 20px rgba(255, 85, 96, 0.2);
+            }
+        }
+
+        .animate-glowing {
+            animation: glowing 3s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .animate-float-delayed {
+            animation: float 4s ease-in-out infinite;
+            animation-delay: 2s;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+
+<body class="selection:bg-primary selection:text-on-primary">
+    <!-- Interactive Blob Cursor Effect -->
+    <div id="cursor-blob"
+        class="fixed top-0 left-0 w-[500px] h-[500px] rounded-full mix-blend-screen pointer-events-none z-0 opacity-50 blur-[150px] primary-gradient"
+        style="transform: translate(-50%, -50%); display: none;"></div>
+
+    <!-- Top Navigation Bar -->
+    <nav class="fixed top-0 w-full z-50 bg-[#131313]/40 backdrop-blur-xl transition-all duration-300">
+        <div class="flex justify-between items-center px-10 py-6 max-w-[1440px] mx-auto">
+            <div class="text-2xl font-black tracking-tighter text-[#e2e2e2] font-headline">Selling Content</div>
+            <div class="hidden md:flex items-center gap-x-12">
+                <a class="text-primary border-b-2 border-primary pb-1 font-headline font-bold tracking-tight"
+                    href="#">Solution</a>
+                <a class="text-[#e2e2e2] opacity-80 hover:text-primary transition-all duration-300 ease-out font-headline font-bold tracking-tight"
+                    href="#">Portfolio</a>
+                <a class="text-[#e2e2e2] opacity-80 hover:text-primary transition-all duration-300 ease-out font-headline font-bold tracking-tight"
+                    href="#">Pricing</a>
+                <a class="text-[#e2e2e2] opacity-80 hover:text-primary transition-all duration-300 ease-out font-headline font-bold tracking-tight"
+                    href="#">Contact</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <button
+                    class="hidden lg:block px-6 py-2.5 rounded-lg font-bold text-sm bg-surface-bright text-on-surface hover:text-primary transition-colors">
+                    로그인
+                </button>
+                <button
+                    class="px-6 py-2.5 rounded-lg font-bold text-sm primary-gradient text-on-primary transition-transform scale-95 active:scale-90">
+                    비즈니스 문의하기
+                </button>
+            </div>
+        </div>
+    </nav>
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-[#0e0e0e]">
+        <div class="absolute inset-0 z-0">
+            <div
+                class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#1a1a1a] via-[#0e0e0e] to-[#0e0e0e]">
+            </div>
+            <div
+                class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/dark-matter.png')]">
+            </div>
+        </div>
+        <div class="relative z-10 max-w-[1440px] px-10 w-full text-center">
+            <span
+                class="inline-block mb-6 px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold tracking-widest uppercase font-label">
+                Premium Video Production Team
+            </span>
+            <h1 class="text-4xl md:text-7xl font-black font-headline tracking-tight mb-8">
+                하나부터 열까지 맞춘 <br />
+                <span class="gradient-text">영상제작, 비용부터 성과까지</span>
+            </h1>
+            <p class="max-w-2xl mx-auto text-lg text-on-surface-variant font-body mb-12 opacity-80">
+                단순히 예쁜 영상이 아닌, 비즈니스 성과를 만드는 전략적 콘텐츠를 제작합니다. <br />
+                데이터 기반 기획과 압도적인 비주얼 퀄리티로 브랜드의 가치를 증명하세요.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                <button
+                    class="px-10 py-5 rounded-lg primary-gradient text-white font-bold text-lg shadow-[0_20px_40px_rgba(255,85,96,0.3)] hover:scale-105 transition-transform">
+                    비즈니스 문의하기
+                </button>
+                <button
+                    class="px-10 py-5 rounded-lg border-2 border-primary text-white font-bold text-lg hover:scale-105 transition-transform backdrop-blur-md">
+                    솔루션 알아보기
+                </button>
+            </div>
+        </div>
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 opacity-40">
+            <div class="w-[1px] h-20 bg-gradient-to-b from-primary to-transparent"></div>
+        </div>
+    </section>
+    <!-- Stats Section -->
+    <section class="py-32 bg-surface">
+        <div class="max-w-[1440px] mx-auto px-10">
+            <div class="grid lg:grid-cols-2 gap-20 items-center">
+                <div>
+                    <h2 class="text-4xl font-black font-headline mb-8">콘텐츠로 비즈니스의 <br /><span class="gradient-text">새로운
+                            기준을 세웁니다.</span></h2>
+                    <p class="text-on-surface-variant text-lg mb-12 max-w-lg">
+                        Selling Content는 영상 기획부터 제작, 배포 전략까지 전 과정을 아우르는 크리에이티브 엔진입니다. 우리는 기술적 완벽함과 창의적 유연성을 결합하여 고객사의
+                        성장을 견인합니다.
+                    </p>
+                    <div class="flex gap-4">
+                        <div class="p-4 rounded-xl bg-surface-container border border-outline-variant/20">
+                            <span class="material-symbols-outlined icon-gradient mb-2"
+                                data-icon="videocam">videocam</span>
+                            <div class="font-bold">전문 촬영팀</div>
+                        </div>
+                        <div class="p-4 rounded-xl bg-surface-container border border-outline-variant/20">
+                            <span class="material-symbols-outlined icon-gradient mb-2"
+                                data-icon="edit_note">edit_note</span>
+                            <div class="font-bold">전략 기획팀</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-8">
+                    <div class="p-10 rounded-2xl bg-surface-container-low border-l-4 border-primary">
+                        <div class="text-5xl font-black font-headline text-primary mb-2">500+</div>
+                        <div class="text-on-surface opacity-60 font-medium">Portfolios</div>
+                    </div>
+                    <div class="p-10 rounded-2xl bg-surface-container-low border-l-4 border-primary">
+                        <div class="text-5xl font-black font-headline text-primary mb-2">98%</div>
+                        <div class="text-on-surface opacity-60 font-medium">Success Rate</div>
+                    </div>
+                    <div class="p-10 rounded-2xl bg-surface-container-low border-l-4 border-primary col-span-2">
+                        <div class="text-6xl font-black font-headline text-primary mb-2">10M+</div>
+                        <div class="text-on-surface opacity-60 font-medium">Total Viewers Reached</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Portfolio Section -->
+    <section class="py-32 bg-surface-container-lowest">
+        <div class="max-w-[1440px] mx-auto px-10">
+            <div class="flex justify-between items-end mb-16">
+                <div>
+                    <h2 class="text-sm font-bold text-primary tracking-[0.2em] uppercase mb-4 font-label">Portfolio</h2>
+                    <h3 class="text-5xl font-black font-headline">결과로 증명하는 <br />압도적 퀄리티</h3>
+                </div>
+                <button
+                    class="group flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors">
+                    전체 보기 <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform"
+                        data-icon="arrow_forward">arrow_forward</span>
+                </button>
+            </div>
+            <!-- Bento Grid Portfolio -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[800px]">
+                <div class="md:col-span-8 group relative overflow-hidden rounded-xl bg-surface-container">
+                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        alt="futuristic 3D abstract rendering with red and violet glowing lights in a dark space, high contrast"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYxX_xfq8SBFflcMusjdEfnhrT4jz9vQ_H4mj6Bp_9t0Unu1JqgTx2mfMceNGjtgnFkOBDA3olsm1OY6LXUTPB4FrUmBgqt94jQZFFwqK2EWDTvWt0MX9UoLNnCcRTfRH-jjGPxHqeLyb_cI7IHrYvsueetF6SDXX23rTTtk3dLzI0G6J2rWR4hSv59uFzyeQ6A4OHx5W6aDq16C-Xksu0y_gC-5OrGn8M3sHevk-lrY1G5qQwHHr6LU59blbshi-BgdwqopDiuUc" />
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-8 flex flex-col justify-end">
+                        <span class="text-primary font-bold text-sm mb-2 uppercase">Commercial</span>
+                        <h4 class="text-2xl font-bold font-headline">Global Tech Brand Identity</h4>
+                    </div>
+                </div>
+                <div class="md:col-span-4 group relative overflow-hidden rounded-xl bg-surface-container">
+                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        alt="top view of a desk with professional video editing setup, mechanical keyboard and glowing monitors in a dark room"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCG4sHVYVxdzQ_T9Bow3ykQRphoDrYjHpbJg4aSl6QwqQGqLOgMFCB-T_wOcfn5S6TLw2Qq56Tfp0aqr6BZtbCVKPofClrH3D3eYpWl99gqwSvIWrhWwlVXfKNd_XU9sTzVCeC8xQH6AXlR-GiGURRRxvZ65g7ZspX_paQCPYcLRnf2lP6yPgpdR55-kOfoh4OrTLwQY7FIgkWDG-L8busOUCEBz9h530g5i-FrsLigM5ePsguqeSea771yJpiJXuhc-lCyzrTU4_o" />
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-8 flex flex-col justify-end">
+                        <span class="text-primary font-bold text-sm mb-2 uppercase">Short-form</span>
+                        <h4 class="text-2xl font-bold font-headline">Viral Social Series</h4>
+                    </div>
+                </div>
+                <div class="md:col-span-4 group relative overflow-hidden rounded-xl bg-surface-container">
+                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        alt="vintage aesthetic electronic equipment and CRT monitors with neon light reflections in a moody creative studio"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9jJQBPlLWcGlA6lbUmxWO4B5LU5zI-Q2auqklp4poUyW-08DhRH88YfjHf41kmzvO2PiDhtfK4pJewF4bOTb7fg27dw0gWzKbZByoBAQNjTGLWCb0syRW29MJt8ZhoZ0qKmFZYtxo3hQoBTt5hBl0Yd6DHArWIJeCI7FA2SrBXia1NWgYNALcU7PlP_c2zSUb6SOu6-YFY-COijuojR49ZLcC-XqW2cdDwuUKhsYiaTXMwF1e7YgdFKbUSu3cPgfehwWu_QAKEvU" />
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-8 flex flex-col justify-end">
+                        <span class="text-primary font-bold text-sm mb-2 uppercase">Motion Graphics</span>
+                        <h4 class="text-2xl font-bold font-headline">Abstract Visual Journey</h4>
+                    </div>
+                </div>
+                <div class="md:col-span-8 group relative overflow-hidden rounded-xl bg-surface-container">
+                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        alt="cinematic wide shot of a luxury fashion film set with high-end lighting rigs and professional actors"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTSJ_vrjYI_tzGMRvQB-3viHjekF6d78LdpTu-7zgxufQhtaUXqalEja9HfFhGEoFn3EK9NSIj5dEz8QM49k_3FzgosFCKKRyTktcCbHG2OJ9-aDZqDuTGi3GyFy_akpoPGKvkOpUP-RCem2rl8-ZqHSZjqMA4KRkwFrM_csEfwf57dwoIS4A0rkoodB_H5vrGtMHXmuvkR5cls-nMZVbnIiRQcG8gE4mtac7ICy7c2ZwbI-_Wq_xLnikvgzHYlS_pV6YOPJG6cFU" />
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-8 flex flex-col justify-end">
+                        <span class="text-primary font-bold text-sm mb-2 uppercase">Brand Film</span>
+                        <h4 class="text-2xl font-bold font-headline">Luxury Lifestyle Narrative</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Pricing Section -->
+    <section class="py-32 bg-surface">
+        <div class="max-w-[1440px] mx-auto px-10">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-5xl font-black font-headline mb-6">성장을 위한 <span class="gradient-text">합리적인
+                        플랜</span></h2>
+                <p class="text-on-surface-variant max-w-xl mx-auto">불필요한 거품을 빼고 오직 결과에만 집중했습니다.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Basic -->
+                <div
+                    class="flex flex-col p-10 rounded-2xl bg-surface-container-low border border-outline-variant/10 hover:border-primary/40 transition-all duration-300">
+                    <div class="mb-8">
+                        <h4 class="text-xl font-bold mb-2">Basic</h4>
+                        <div class="text-4xl font-black font-headline mb-4">39만원 <span
+                                class="text-sm font-normal opacity-40">/ 편</span></div>
+                        <p class="text-sm text-on-surface-variant">숏폼 중심의 빠른 제작이 필요한 분들을 위한 실속형 플랜</p>
+                    </div>
+                    <ul class="space-y-4 mb-10 flex-grow">
+                        <li class="flex items-center gap-3 text-sm"><span
+                                class="material-symbols-outlined text-primary text-lg"
+                                data-icon="check_circle">check_circle</span> 숏폼(TikTok/Reels) 특화</li>
+                        <li class="flex items-center gap-3 text-sm"><span
+                                class="material-symbols-outlined text-primary text-lg"
+                                data-icon="check_circle">check_circle</span> 기본 컷 편집 및 자막</li>
+                        <li class="flex items-center gap-3 text-sm"><span
+                                class="material-symbols-outlined text-primary text-lg"
+                                data-icon="check_circle">check_circle</span> 저작권 프리 음원 사용</li>
+                        <li class="flex items-center gap-3 text-sm opacity-40"><span
+                                class="material-symbols-outlined text-lg" data-icon="cancel">cancel</span> 기획 및 시나리오 제외
+                        </li>
+                    </ul>
+                    <button
+                        class="w-full py-4 rounded-lg border border-primary/40 text-primary font-bold hover:bg-primary/10 transition-colors">선택하기</button>
+                </div>
+                <!-- Standard -->
+                <div
+                    class="relative flex flex-col p-10 rounded-2xl bg-surface-container border-2 border-primary shadow-[0_20px_50px_rgba(255,85,96,0.1)] scale-105 z-10">
+                    <div
+                        class="absolute top-0 right-10 -translate-y-1/2 px-4 py-1 primary-gradient text-on-primary text-xs font-bold rounded-full">
+                        POPULAR</div>
+                    <div class="mb-8">
+                        <h4 class="text-xl font-bold mb-2">Standard</h4>
+                        <div class="text-4xl font-black font-headline mb-4">140만원 <span
+                                class="text-sm font-normal opacity-40">/ 편</span></div>
+                        <p class="text-sm text-on-surface-variant">브랜드 이미지를 구축하고 신뢰도를 높이는 고퀄리티 제작 플랜</p>
+                    </div>
+                    <ul class="space-y-4 mb-10 flex-grow">
+                        <li class="flex items-center gap-3 text-sm"><span
+                                class="material-symbols-outlined text-primary text-lg"
+                                data-icon="check_circle">check_circle</span> 전문 광고 모델 및 로케이션</li>
+                        <li class="flex items-center gap-3 text-sm"><span
+                                class="material-symbols-outlined text-primary text-lg"
+                                data-icon="check_circle">check_circle</span> 모션 그래픽 및 2D 이펙트</li>
+                        <li class="flex items-center gap-3 text-sm"><span
+                                class="material-symbols-outlined text-primary text-lg"
+                                data-icon="check_circle">check_circle</span> 기획 및 스토리보드 포함</li>
+                        <li class="flex items-center gap-3 text-sm"><span
+                                class="material-symbols-outlined text-primary text-lg"
+                                data-icon="check_circle">check_circle</span> 성우 및 배경음악 믹싱</li>
+                    </ul>
+                    <button class="w-full py-4 rounded-lg primary-gradient text-white font-bold">상담 시작하기</button>
+                </div>
+                <!-- Pro -->
+                <div
+                    class="flex flex-col p-10 rounded-2xl bg-surface-container-low border border-outline-variant/10 hover:border-primary/40 transition-all duration-300">
+                    <div class="mb-8">
+                        <h4 class="text-xl font-bold mb-2">Pro</h4>
+                        <div class="text-4xl font-black font-headline mb-4">320만원 <span
+                                class="text-sm font-normal opacity-40">/ 프로젝트</span></div>
+                        <p class="text-sm text-on-surface-variant">전략적 마케팅과 대규모 캠페인을 위한 올인원 솔루션</p>
+                    </div>
+                    <ul class="space-y-4 mb-10 flex-grow">
+                        <li class="flex items-center gap-3 text-sm"><span
+                                class="material-symbols-outlined text-primary text-lg"
+                                data-icon="check_circle">check_circle</span> 퍼포먼스 마케팅 전략 수립</li>
+                        <li class="flex items-center gap-3 text-sm"><span
+                                class="material-symbols-outlined text-primary text-lg"
+                                data-icon="check_circle">check_circle</span> 바이럴 특화 콘텐츠 5종</li>
+                        <li class="flex items-center gap-3 text-sm"><span
+                                class="material-symbols-outlined text-primary text-lg"
+                                data-icon="check_circle">check_circle</span> 시네마급 4K 촬영 장비</li>
+                        <li class="flex items-center gap-3 text-sm"><span
+                                class="material-symbols-outlined text-primary text-lg"
+                                data-icon="check_circle">check_circle</span> 광고 집행 최적화 및 리포트</li>
+                    </ul>
+                    <button
+                        class="w-full py-4 rounded-lg border border-primary/40 text-primary font-bold hover:bg-primary/10 transition-colors">커스텀
+                        문의</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Partners Section (Scrolling) -->
+    <section class="py-20 bg-surface-container-lowest overflow-hidden">
+        <div class="max-w-[1440px] mx-auto px-10 mb-10">
+            <h4
+                class="text-center text-on-surface opacity-40 font-headline font-bold uppercase tracking-widest text-xs">
+                Trusted By Industry Leaders</h4>
+        </div>
+        <div class="flex overflow-hidden py-8 group">
+            <div class="flex items-center w-max animate-scroll group-hover:[animation-play-state:paused]">
+                <div
+                    class="flex shrink-0 items-center gap-24 px-10 pr-24 grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500">
+                    <span class="text-3xl font-black font-headline">HYBE</span>
+                    <span class="text-3xl font-black font-headline">SAMSUNG</span>
+                    <span class="text-3xl font-black font-headline">NAVER</span>
+                    <span class="text-3xl font-black font-headline">KAKAOTALK</span>
+                    <span class="text-3xl font-black font-headline">CJ ENM</span>
+                    <span class="text-3xl font-black font-headline">MUSINSA</span>
+                    <span class="text-3xl font-black font-headline">COUPANG</span>
+                </div>
+                <!-- Duplicate for infinite effect look -->
+                <div
+                    class="flex shrink-0 items-center gap-24 px-10 pr-24 grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500">
+                    <span class="text-3xl font-black font-headline">HYBE</span>
+                    <span class="text-3xl font-black font-headline">SAMSUNG</span>
+                    <span class="text-3xl font-black font-headline">NAVER</span>
+                    <span class="text-3xl font-black font-headline">KAKAOTALK</span>
+                    <span class="text-3xl font-black font-headline">CJ ENM</span>
+                    <span class="text-3xl font-black font-headline">MUSINSA</span>
+                    <span class="text-3xl font-black font-headline">COUPANG</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Form Section -->
+    <section class="py-32 bg-surface">
+        <div class="max-w-[1440px] mx-auto px-10">
+            <div class="bg-surface-container-high rounded-3xl p-12 md:p-20 relative overflow-hidden">
+                <div
+                    class="absolute top-0 right-0 w-96 h-96 primary-gradient blur-[150px] opacity-10 -translate-y-1/2 translate-x-1/2">
+                </div>
+                <div class="grid lg:grid-cols-2 gap-20">
+                    <div>
+                        <h2 class="text-5xl font-black font-headline mb-8">당신의 비즈니스를 <br /><span
+                                class="gradient-text">영상으로 연결하세요</span></h2>
+                        <p class="text-on-surface-variant text-lg mb-12">기획부터 제작까지 전문가가 직접 상담해 드립니다. <br />24시간 이내에 답변
+                            드리겠습니다.</p>
+                        <div class="space-y-6">
+                            <div class="flex items-center gap-4 text-on-surface">
+                                <span class="w-12 h-12 rounded-full bg-surface-bright flex items-center justify-center">
+                                    <span class="material-symbols-outlined icon-gradient" data-icon="mail">mail</span>
+                                </span>
+                                <div>
+                                    <div class="text-sm opacity-60">Email Address</div>
+                                    <div class="font-bold">contact@sellingcontent.co.kr</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4 text-on-surface">
+                                <span class="w-12 h-12 rounded-full bg-surface-bright flex items-center justify-center">
+                                    <span class="material-symbols-outlined icon-gradient" data-icon="call">call</span>
+                                </span>
+                                <div>
+                                    <div class="text-sm opacity-60">Phone Number</div>
+                                    <div class="font-bold">+82 02-1234-5678</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <form class="space-y-6">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label
+                                    class="text-xs font-bold uppercase tracking-wider opacity-60 font-label">이름/기업명</label>
+                                <input
+                                    class="w-full bg-surface-container border-0 border-b-2 border-outline-variant/20 focus:ring-0 focus:border-primary px-0 py-3 text-on-surface transition-all placeholder:opacity-20"
+                                    placeholder="홍길동" type="text" />
+                            </div>
+                            <div class="space-y-2">
+                                <label
+                                    class="text-xs font-bold uppercase tracking-wider opacity-60 font-label">연락처</label>
+                                <input
+                                    class="w-full bg-surface-container border-0 border-b-2 border-outline-variant/20 focus:ring-0 focus:border-primary px-0 py-3 text-on-surface transition-all placeholder:opacity-20"
+                                    placeholder="010-0000-0000" type="tel" />
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-xs font-bold uppercase tracking-wider opacity-60 font-label">프로젝트
+                                유형</label>
+                            <select
+                                class="w-full bg-surface-container border-0 border-b-2 border-outline-variant/20 focus:ring-0 focus:border-primary px-0 py-3 text-on-surface appearance-none">
+                                <option>선택해주세요</option>
+                                <option>Short-form (숏폼)</option>
+                                <option>Commercial (광고)</option>
+                                <option>Brand Film (브랜드 필름)</option>
+                                <option>Other (기타)</option>
+                            </select>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-xs font-bold uppercase tracking-wider opacity-60 font-label">상세
+                                내용</label>
+                            <textarea
+                                class="w-full bg-surface-container border-0 border-b-2 border-outline-variant/20 focus:ring-0 focus:border-primary px-0 py-3 text-on-surface transition-all placeholder:opacity-20 resize-none"
+                                placeholder="문의하실 내용을 입력해주세요." rows="4"></textarea>
+                        </div>
+                        <button
+                            class="w-full py-5 rounded-lg primary-gradient text-white font-bold text-lg shadow-[0_15px_30px_rgba(255,85,96,0.2)] hover:scale-[1.02] active:scale-95 transition-all">
+                            문의 보내기
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-[#0e0e0e] w-full py-20 px-10 border-t border-[#1f1f1f]">
+        <div class="flex flex-col md:flex-row justify-between items-center max-w-[1440px] mx-auto gap-10">
+            <div class="text-left">
+                <div class="text-xl font-bold text-primary mb-4 font-headline">Selling Content</div>
+                <p class="text-[#e2e2e2] opacity-60 max-w-sm mb-6 font-body text-sm">
+                    최고의 비즈니스 성과를 창출하는 크리에이티브 영상 제작 스튜디오. <br />
+                    우리는 당신의 이야기를 강력한 비주얼로 변환합니다.
+                </p>
+                <div class="flex gap-4">
+                    <a class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface hover:text-primary transition-colors"
+                        href="#">
+                        <span class="material-symbols-outlined text-lg" data-icon="share">share</span>
+                    </a>
+                    <a class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface hover:text-primary transition-colors"
+                        href="#">
+                        <span class="material-symbols-outlined text-lg" data-icon="public">public</span>
+                    </a>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row gap-12 text-center md:text-left">
+                <div class="space-y-4">
+                    <h5 class="text-sm font-bold tracking-widest uppercase text-primary">Links</h5>
+                    <div class="flex flex-col gap-2">
+                        <a class="text-[#e2e2e2] opacity-60 hover:opacity-100 hover:text-primary transition-opacity font-body text-sm"
+                            href="#">Privacy Policy</a>
+                        <a class="text-[#e2e2e2] opacity-60 hover:opacity-100 hover:text-primary transition-opacity font-body text-sm"
+                            href="#">Terms of Service</a>
+                        <a class="text-[#e2e2e2] opacity-60 hover:opacity-100 hover:text-primary transition-opacity font-body text-sm"
+                            href="#">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-[1440px] mx-auto mt-20 pt-10 border-t border-[#1f1f1f] text-center">
+            <p class="text-[#e2e2e2] opacity-40 text-xs font-body">© 2024 Selling Content. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- INTERACTION SCRIPT -->
+    <script>
+        // 1. Navigation Bar Scroll Effect
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-[#131313]/90', 'shadow-2xl', 'border-b', 'border-[#353535]/50');
+                nav.classList.remove('bg-[#131313]/40');
+            } else {
+                nav.classList.add('bg-[#131313]/40');
+                nav.classList.remove('bg-[#131313]/90', 'shadow-2xl', 'border-b', 'border-[#353535]/50');
+            }
+        });
+
+        // 2. Scroll Reveal Effect Setup using Intersection Observer
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.remove('opacity-0', 'translate-y-12');
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Apply initial hidden state to block elements inside sections
+        document.querySelectorAll('section > div:not(.absolute)').forEach((el, index) => {
+            el.classList.add('opacity-0', 'translate-y-12', 'transition-all', 'duration-1000', 'ease-out');
+
+            // Slight staggered delay depending on vertical position
+            el.style.transitionDelay = `${(index % 3) * 100}ms`;
+
+            observer.observe(el);
+        });
+
+        // 3. Smooth Anchor Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetRef = this.getAttribute('href');
+                if (targetRef && targetRef !== '#') {
+                    const targetEl = document.querySelector(targetRef);
+                    if (targetEl) {
+                        targetEl.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        // 4. Mouse Blob Glow Effect
+        const cursorBlob = document.getElementById("cursor-blob");
+        if (cursorBlob) {
+            window.addEventListener("mousemove", (e) => {
+                cursorBlob.style.display = "block";
+                cursorBlob.animate({
+                    left: `${e.clientX}px`,
+                    top: `${e.clientY}px`
+                }, { duration: 4000, fill: "forwards", easing: "ease-out" });
+            });
+        }
+
+        // 5. 3D Tilt Hover Effect for Cards
+        const tiltCards = document.querySelectorAll('section:nth-of-type(3) .grid > div, section:nth-of-type(4) .grid > div');
+        tiltCards.forEach(card => {
+            const isScale105 = card.classList.contains('scale-105');
+            const baseScale = isScale105 ? 1.05 : 1;
+
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                // Max rotation 15deg
+                const rotateX = ((y - centerY) / centerY) * -15;
+                const rotateY = ((x - centerX) / centerX) * 15;
+
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(${baseScale * 1.03}, ${baseScale * 1.03}, ${baseScale * 1.03})`;
+                card.style.transition = 'none';
+                card.style.zIndex = '50';
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = isScale105 ? 'scale(1.05)' : 'scale(1)';
+                card.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                card.style.zIndex = isScale105 ? '10' : '1';
+            });
+        });
+
+        // 6. Hero Soft Parallax
+        const heroTarget = document.querySelector('section.relative.min-h-screen .max-w-\\[1440px\\]');
+        window.addEventListener('mousemove', (e) => {
+            if (!heroTarget) return;
+            const mouseX = e.clientX / window.innerWidth - 0.5;
+            const mouseY = e.clientY / window.innerHeight - 0.5;
+
+            heroTarget.style.transform = `translateY(${mouseY * -30}px) translateX(${mouseX * -30}px)`;
+            heroTarget.style.transition = 'transform 0.1s ease-out';
+        });
+
+        // 7. Dynamic Glowing Text
+        const heroGradientText = document.querySelector('h1 .gradient-text');
+        if (heroGradientText) {
+            heroGradientText.classList.add('animate-glowing', 'inline-block', 'transition-transform', 'duration-300', 'hover:scale-105', 'hover:-rotate-2');
+        }
+
+        // 8. Magnetic Hero Buttons
+        const heroButtons = document.querySelectorAll('h1 ~ div.flex button');
+        heroButtons.forEach((btn, index) => {
+            btn.classList.add(index % 2 === 0 ? 'animate-float' : 'animate-float-delayed');
+
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = (e.clientX - rect.left) - rect.width / 2;
+                const y = (e.clientY - rect.top) - rect.height / 2;
+                btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px) scale(1.1)`;
+                btn.style.transition = 'transform 0.1s ease-out';
+            });
+
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'translate(0px, 0px) scale(1)';
+                btn.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            });
+        });
+    </script>
+</body>
+
+</html>
