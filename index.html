@@ -203,13 +203,13 @@
             <div class="text-2xl font-black tracking-tighter text-[#e2e2e2] font-headline">Selling Content</div>
             <div class="hidden md:flex items-center gap-x-12">
                 <a class="text-primary border-b-2 border-primary pb-1 font-headline font-bold tracking-tight"
-                    href="#">Solution</a>
+                    href="#solution">Solution</a>
                 <a class="text-[#e2e2e2] opacity-80 hover:text-primary transition-all duration-300 ease-out font-headline font-bold tracking-tight"
-                    href="#">Portfolio</a>
+                    href="#portfolio">Portfolio</a>
                 <a class="text-[#e2e2e2] opacity-80 hover:text-primary transition-all duration-300 ease-out font-headline font-bold tracking-tight"
-                    href="#">Pricing</a>
+                    href="#pricing">Pricing</a>
                 <a class="text-[#e2e2e2] opacity-80 hover:text-primary transition-all duration-300 ease-out font-headline font-bold tracking-tight"
-                    href="#">Contact</a>
+                    href="#contact">Contact</a>
             </div>
             <div class="flex items-center gap-4">
                 <button
@@ -248,11 +248,11 @@
                 데이터 기반 기획과 압도적인 비주얼 퀄리티로 브랜드의 가치를 증명하세요.
             </p>
             <div class="flex flex-col sm:flex-row gap-6 justify-center">
-                <button
+                <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})"
                     class="px-10 py-5 rounded-lg primary-gradient text-white font-bold text-lg shadow-[0_20px_40px_rgba(255,85,96,0.3)] hover:scale-105 transition-transform">
                     비즈니스 문의하기
                 </button>
-                <button
+                <button onclick="document.getElementById('solution').scrollIntoView({behavior: 'smooth'})"
                     class="px-10 py-5 rounded-lg border-2 border-primary text-white font-bold text-lg hover:scale-105 transition-transform backdrop-blur-md">
                     솔루션 알아보기
                 </button>
@@ -264,7 +264,7 @@
         </div>
     </section>
     <!-- Stats Section -->
-    <section class="py-32 bg-surface">
+    <section id="solution" class="py-32 bg-surface">
         <div class="max-w-[1440px] mx-auto px-10">
             <div class="grid lg:grid-cols-2 gap-20 items-center">
                 <div>
@@ -308,7 +308,7 @@
         </div>
     </section>
     <!-- Portfolio Section -->
-    <section class="py-32 bg-surface-container-lowest">
+    <section id="portfolio" class="py-32 bg-surface-container-lowest">
         <div class="max-w-[1440px] mx-auto px-10">
             <div class="flex justify-between items-end mb-16">
                 <div>
@@ -367,7 +367,7 @@
         </div>
     </section>
     <!-- Pricing Section -->
-    <section class="py-32 bg-surface">
+    <section id="pricing" class="py-32 bg-surface">
         <div class="max-w-[1440px] mx-auto px-10">
             <div class="text-center mb-20">
                 <h2 class="text-4xl md:text-5xl font-black font-headline mb-6">성장을 위한 <span
@@ -494,7 +494,7 @@
         </div>
     </section>
     <!-- Contact Form Section -->
-    <section class="py-32 bg-surface">
+    <section id="contact" class="py-32 bg-surface">
         <div class="max-w-[1440px] mx-auto px-10">
             <div class="bg-surface-container-high rounded-3xl p-12 md:p-20 relative overflow-hidden">
                 <div
