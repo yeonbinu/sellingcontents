@@ -119,7 +119,8 @@
 
         .gradient-text {
             background: linear-gradient(135deg, #FF5560 0%, #8E2DE2 100%);
-            /* -webkit-background-clip: text; */
+            -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
@@ -148,7 +149,8 @@
 
         .icon-gradient {
             background: linear-gradient(135deg, #FF5560 0%, #8E2DE2 100%);
-            /* -webkit-background-clip: text; */
+            -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
@@ -628,7 +630,19 @@
             }
         });
 
-        // 2. Scroll Reveal Effect Setup using Intersection Observer
+        // 2. Scroll Progress Bar Indicator
+        const progressBar = document.createElement('div');
+        progressBar.className = 'fixed top-0 left-0 w-full h-1 bg-gradient-to-r from-[#FF5560] to-[#8E2DE2] z-[100] origin-left scale-x-0 transition-transform duration-100 ease-out';
+        document.body.appendChild(progressBar);
+
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height);
+            progressBar.style.transform = `scaleX(${scrolled})`;
+        });
+
+        // 2-B. Scroll Reveal Effect Setup using Intersection Observer
         const observerOptions = {
             root: null,
             rootMargin: '0px',
